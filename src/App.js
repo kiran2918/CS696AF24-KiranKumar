@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
+import Sidebar from './Components/Sidebar';     // Sidebar Component
+import Header from './Components/Header';       // Header Component
+import SummaryStatistics from './Components/SummaryStatistics'; // Summary Statistics Component
+import ChartWidget from './Components/ChartWidget'; // Chart Widget Component
+import RecentActivity from './Components/RecentActivity'; // Recent Activity Component
+import PerformanceMetrics from './Components/PerformanceMetrics'; // Performance Metrics Component
+import Footer from './Components/Footer';       // Footer Component
+import { Container, Row, Col } from 'react-bootstrap';  // Bootstrap Grid System
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <Header />
+        <Container fluid>
+          <SummaryStatistics />
+          <Row>
+            <Col md={8}>
+              <ChartWidget />
+            </Col>
+            <Col md={4}>
+              <RecentActivity />
+            </Col>
+          </Row>
+          <PerformanceMetrics />
+        </Container>
+        <Footer />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
